@@ -1,0 +1,68 @@
+import { Link } from "gatsby"
+
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+
+<Layout>
+  <SEO title="Kotlin Interview Questions" />
+
+# Kotlin Interview Questions
+
+__What is the difference between `val` and `var` in kotlin?__
+
+_Solution:_
+
+In kotlin, `val` is equivalent to java's final keyword. They are immutable , once assigned a value it cannot be changed. `var` is mutable like a normal variable.
+
+__Are below statements syntactically correct?__
+
+```kotlin
+var number // line 1
+number = 10 //line 2
+```
+
+_Solution:_
+
+No. This gives us a compile time error. Kotlin uses type inference at compile time , that is inferes the type of a variable either from the value assigned to it or from the annotation of the datatype given. so the above line of code gives error as number doesn’t explicitly mention  any of it and compiler cannot make out ,what type is number.
+
+__Give the output of the following programme__
+
+```kotlin
+fun main() {
+
+   var employee1 = Employee("maria", 1)
+   var employee2 = Employee("john", 2)
+   var employee3 = Employee("peter", 3)
+   var employee4 = Employee("peter", 3)
+
+   println(employee1 == employee2) 
+   println(employee3 == employee4)
+
+   println(employee1.equals(employee2))
+   println(employee3.equals(employee4))  
+ }
+
+class Employee(var name: String, var id: Int) {
+
+   override fun equals(obj: Any?): Boolean {
+
+       if (obj is Employee) {
+           return name == obj.name && id == obj.id
+       }
+       return false
+   }
+}
+```
+
+_Solution:_
+
+`false, true, false, true`
+
+== and .equals are both same in kotlin .Unlike in java they both check for structural equality.
+
+__How do you check for referential equality in Kotlin?__
+
+`===` using this triple equals operator.
+
+
+</Layout>
